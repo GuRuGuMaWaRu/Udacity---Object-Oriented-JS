@@ -46,31 +46,26 @@ var Player = function(x, y) {
 };
 
 Player.prototype.update = function() {
-  // console.log("x", this.x);
-  // console.log("y", this.y);
   if (this.direction === "left") {
     if (this.x - this.stepX > -40) {
       this.x = this.x - this.stepX;
     } else {
-      // console.log(`x: ${this.x}; y: ${this.y}`);
     }
   } else if (this.direction === "right") {
     if (this.x + this.stepX < 505) {
       this.x = this.x + this.stepX;
     } else {
-      // console.log(`x: ${this.x}; y: ${this.y}`);
     }
   } else if (this.direction === "up") {
-    if (this.y - this.stepY > -40) {
+    if (this.y - this.stepY > 30) {
       this.y = this.y - this.stepY;
     } else {
-      // console.log(`x: ${this.x}; y: ${this.y}`);
+      this.reset();
     }
   } else if (this.direction === "down") {
     if (this.y + this.stepY < 471) {
       this.y = this.y + this.stepY;
     } else {
-      // console.log(`x: ${this.x}; y: ${this.y}`);
     }
   }
   this.direction = "none";
@@ -98,6 +93,12 @@ Player.prototype.handleInput = function(key) {
       this.direction = "none";
       return;
   }
+};
+
+Player.prototype.reset = function() {
+  this.x = 303;
+  this.y = 388;
+  this.direction = "none";
 };
 
 // Now instantiate your objects.
