@@ -46,14 +46,32 @@ var Player = function(x, y) {
 };
 
 Player.prototype.update = function() {
+  // console.log("x", this.x);
+  // console.log("y", this.y);
   if (this.direction === "left") {
-    this.x = this.x - this.stepX;
+    if (this.x - this.stepX > -40) {
+      this.x = this.x - this.stepX;
+    } else {
+      // console.log(`x: ${this.x}; y: ${this.y}`);
+    }
   } else if (this.direction === "right") {
-    this.x = this.x + this.stepX;
+    if (this.x + this.stepX < 505) {
+      this.x = this.x + this.stepX;
+    } else {
+      // console.log(`x: ${this.x}; y: ${this.y}`);
+    }
   } else if (this.direction === "up") {
-    this.y = this.y - this.stepY;
+    if (this.y - this.stepY > -40) {
+      this.y = this.y - this.stepY;
+    } else {
+      // console.log(`x: ${this.x}; y: ${this.y}`);
+    }
   } else if (this.direction === "down") {
-    this.y = this.y + this.stepY;
+    if (this.y + this.stepY < 471) {
+      this.y = this.y + this.stepY;
+    } else {
+      // console.log(`x: ${this.x}; y: ${this.y}`);
+    }
   }
   this.direction = "none";
 };
