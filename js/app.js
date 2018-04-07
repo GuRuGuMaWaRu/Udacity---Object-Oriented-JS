@@ -46,7 +46,7 @@ Enemy.prototype.render = function() {
 // This class requires an update(), render() and
 // a handleInput() method.
 var Player = function(x, y) {
-  this.sprite = "images/enemy-bug.png";
+  this.sprite = "images/char-boy.png";
   this.x = x;
   this.y = y;
   this.stepY = 83;
