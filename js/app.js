@@ -26,6 +26,15 @@ Enemy.prototype.update = function(dt) {
     this.speed = Math.floor(Math.random() * (120 - 50)) + 50;
   }
   this.x = this.x + this.speed * dt;
+
+  if (
+    this.y === player.y &&
+    this.x + 91 > player.x &&
+    this.x < player.x + 101
+  ) {
+    // console.log("Player!");
+    player.reset();
+  }
 };
 
 // Draw the enemy on the screen, required method for game
@@ -49,23 +58,24 @@ Player.prototype.update = function() {
   if (this.direction === "left") {
     if (this.x - this.stepX > -40) {
       this.x = this.x - this.stepX;
-    } else {
+      // console.log(`x: ${this.x}, y: ${this.y}`);
     }
   } else if (this.direction === "right") {
     if (this.x + this.stepX < 505) {
       this.x = this.x + this.stepX;
-    } else {
+      // console.log(`x: ${this.x}, y: ${this.y}`);
     }
   } else if (this.direction === "up") {
     if (this.y - this.stepY > 30) {
       this.y = this.y - this.stepY;
+      // console.log(`x: ${this.x}, y: ${this.y}`);
     } else {
       this.reset();
     }
   } else if (this.direction === "down") {
     if (this.y + this.stepY < 471) {
       this.y = this.y + this.stepY;
-    } else {
+      // console.log(`x: ${this.x}, y: ${this.y}`);
     }
   }
   this.direction = "none";
@@ -97,14 +107,14 @@ Player.prototype.handleInput = function(key) {
 
 Player.prototype.reset = function() {
   this.x = 303;
-  this.y = 388;
+  this.y = 395;
   this.direction = "none";
 };
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-var player = new Player(303, 388);
+var player = new Player(303, 395);
 var enemy1 = new Enemy(0, 63, 50);
 var enemy2 = new Enemy(303, 146, 60);
 var enemy3 = new Enemy(101, 229, 70);
